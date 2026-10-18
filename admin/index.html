@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src https://knzxdzuuklfpaplnzmev.supabase.co; img-src 'self' https:; base-uri 'none'; object-src 'none'; form-action 'none'">
+  <meta name="theme-color" content="#fff8f2">
+  <title>Administración · Donas Dulce Mordida</title>
+  <link rel="stylesheet" href="./admin.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html" aria-label="Volver al sitio público">Donas Dulce Mordida <span>· Administración</span></a>
+    <a class="back-link" href="../index.html">← Volver al sitio</a>
+  </header>
+  <main class="page-wrap">
+    <section id="login-view" class="auth-card" aria-labelledby="login-title" hidden>
+      <p class="eyebrow">Acceso privado</p><h1 id="login-title">Panel de administración</h1>
+      <p class="muted">Inicia sesión con la cuenta administradora autorizada.</p>
+      <form id="login-form">
+        <label for="login-email">Correo</label>
+        <input id="login-email" type="email" autocomplete="username" readonly required>
+        <label for="login-password">Contraseña</label>
+        <input id="login-password" type="password" autocomplete="current-password" required>
+        <button class="primary" type="submit">Iniciar sesión</button>
+      </form>
+      <p id="login-status" class="status" role="status" aria-live="polite"></p>
+      <p class="fine-print">¿Necesitas restablecer tu acceso? Contacta al propietario del sitio. No se envían enlaces de acceso desde esta página.</p>
+    </section>
+
+    <section id="activation-view" class="auth-card" aria-labelledby="activation-title" hidden>
+      <p class="eyebrow">Activación de cuenta</p><h1 id="activation-title">Elegir contraseña</h1>
+      <p class="muted">Crea una contraseña de al menos 12 caracteres para terminar de activar tu cuenta. No cierres ni recargues esta página hasta guardarla.</p>
+      <form id="activation-form">
+        <label for="new-password">Nueva contraseña</label>
+        <input id="new-password" type="password" autocomplete="new-password" minlength="12" required>
+        <label for="confirm-password">Confirma la contraseña</label>
+        <input id="confirm-password" type="password" autocomplete="new-password" minlength="12" required>
+        <button class="primary" type="submit">Guardar y continuar</button>
+      </form>
+      <p id="activation-status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="admin-view" hidden>
+      <div class="dashboard-heading">
+        <div><p class="eyebrow">Gestión del catálogo</p><h1>Administración</h1><p class="muted">Los cambios se guardan directamente en el catálogo.</p></div>
+        <button id="signout-button" class="button secondary" type="button">Cerrar sesión</button>
+      </div>
+      <p id="global-status" class="status" role="status" aria-live="polite"></p>
+      <div id="loading" class="loading" role="status" hidden>Cargando catálogo…</div>
+      <nav class="tabs" aria-label="Secciones de administración">
+        <button class="tab active" type="button" data-tab="products" aria-selected="true">Productos</button>
+        <button class="tab" type="button" data-tab="combos" aria-selected="false">Combos</button>
+        <button class="tab" type="button" data-tab="images" aria-selected="false">Imágenes</button>
+      </nav>
+
+      <section id="products-panel" class="panel" aria-labelledby="products-heading">
+        <div class="panel-heading"><div><h2 id="products-heading">Productos</h2><p class="muted">Edita el catálogo y el orden de presentación.</p></div><button id="new-product" class="primary" type="button">＋ Agregar producto</button></div>
+        <form id="product-form" class="editor" hidden>
+          <h3 id="product-form-title">Nuevo producto</h3><input id="product-id" type="hidden">
+          <div class="form-grid">
+            <div><label for="product-name">Nombre</label><input id="product-name" maxlength="100" required></div>
+            <div><label for="product-price">Precio base ($ USD)</label><input id="product-price" type="number" min="0" step="0.01" required></div>
+            <div><label for="product-quantity">Cantidad / unidades</label><input id="product-quantity" type="number" min="1" max="10000" step="1" value="1" required></div>
+            <div><label for="product-image">Imagen</label><select id="product-image"><option value="">Sin imagen</option></select></div>
+            <div><label for="product-sort">Orden</label><input id="product-sort" type="number" step="1" value="0"></div>
+            <div class="check-field"><input id="product-active" type="checkbox" checked><label for="product-active">Activo</label></div>
+            <div class="wide"><label for="product-description">Descripción</label><textarea id="product-description" rows="3" maxlength="1000"></textarea></div>
+          </div>
+          <div class="form-actions"><button class="primary" type="submit">Guardar producto</button><button class="button secondary cancel-editor" type="button">Cancelar</button></div>
+        </form>
+        <div id="product-list" class="record-list" aria-live="polite"></div>
+      </section>
+
+      <section id="combos-panel" class="panel" aria-labelledby="combos-heading" hidden>
+        <div class="panel-heading"><div><h2 id="combos-heading">Combos</h2><p class="muted">Elige los productos incluidos y fija el precio de la oferta; todos se guardan juntos.</p></div><button id="new-combo" class="primary" type="button">＋ Agregar combo</button></div>
+        <form id="combo-form" class="editor" hidden>
+          <h3 id="combo-form-title">Nuevo combo</h3><input id="combo-id" type="hidden">
+          <div class="form-grid">
+            <div><label for="combo-name">Nombre</label><input id="combo-name" maxlength="100" required></div>
+            <div><label for="combo-price">Precio ($ USD)</label><input id="combo-price" type="number" min="0" step="0.01" required></div>
+            <div><label for="combo-image">Imagen</label><select id="combo-image"><option value="">Sin imagen</option></select></div>
+            <div><label for="combo-sort">Orden</label><input id="combo-sort" type="number" step="1" value="0"></div>
+            <div class="check-field"><input id="combo-active" type="checkbox" checked><label for="combo-active">Activo</label></div>
+            <div class="wide"><label for="combo-description">Descripción</label><textarea id="combo-description" rows="3" maxlength="1000"></textarea></div>
+          </div>
+          <fieldset class="components"><legend>Productos del combo</legend><div id="combo-items"></div><button id="add-combo-item" class="button secondary" type="button">＋ Añadir producto</button></fieldset>
+          <div class="form-actions"><button class="primary" type="submit">Guardar combo</button><button class="button secondary cancel-editor" type="button">Cancelar</button></div>
+        </form>
+        <div id="combo-list" class="record-list" aria-live="polite"></div>
+      </section>
+
+      <section id="images-panel" class="panel" aria-labelledby="images-heading" hidden>
+        <div class="panel-heading"><div><h2 id="images-heading">Imágenes</h2><p class="muted">Sube archivos JPEG, PNG o WebP de hasta 5 MB. Las fotos son públicas. Ocultar una foto la retira del catálogo, pero no hace privado su archivo. Los originales del repositorio se conservan aunque se retiren de aquí.</p></div></div>
+        <form id="upload-form" class="editor upload-editor">
+          <h3>Subir imagen</h3>
+          <div class="form-grid">
+            <div><label for="image-file">Archivo</label><input id="image-file" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" required></div>
+            <div><label for="image-caption">Texto / descripción</label><input id="image-caption" maxlength="200"></div>
+            <div><label for="image-sort">Orden</label><input id="image-sort" type="number" step="1" value="0"></div>
+            <div class="check-field"><input id="image-gallery" type="checkbox" checked><label for="image-gallery">Mostrar en galería</label></div>
+            <div class="check-field"><input id="image-active" type="checkbox" checked><label for="image-active">Activa</label></div>
+          </div>
+          <div class="form-actions"><button class="primary" type="submit">Subir imagen</button></div>
+        </form>
+        <form id="image-edit-form" class="editor" hidden>
+          <h3>Editar metadatos de imagen</h3><input id="image-edit-id" type="hidden">
+          <div class="form-grid">
+            <div class="wide"><label for="image-edit-caption">Texto / descripción</label><input id="image-edit-caption" maxlength="200"></div>
+            <div><label for="image-edit-sort">Orden</label><input id="image-edit-sort" type="number" step="1"></div>
+            <div class="check-field"><input id="image-edit-gallery" type="checkbox"><label for="image-edit-gallery">Mostrar en galería</label></div>
+            <div class="check-field"><input id="image-edit-active" type="checkbox"><label for="image-edit-active">Activa</label></div>
+          </div>
+          <div class="form-actions"><button class="primary" type="submit">Guardar metadatos</button><button class="button secondary cancel-editor" type="button">Cancelar</button></div>
+        </form>
+        <div class="settings editor">
+          <h3>Imágenes principales del sitio</h3><p class="fine-print">Elige las imágenes hero y menú. Para borrar una imagen asignada aquí, primero reemplázala.</p>
+          <div class="form-grid"><div><label for="hero-image">Imagen principal (hero)</label><select id="hero-image"><option value="">Sin seleccionar</option></select></div><div><label for="menu-image">Imagen del menú</label><select id="menu-image"><option value="">Sin seleccionar</option></select></div></div>
+        </div>
+        <div id="image-list" class="image-grid" aria-live="polite"></div>
+      </section>
+      <noscript>Este panel requiere JavaScript habilitado.</noscript>
+    </section>
+  </main>
+  <script type="module" src="./admin.js"></script>
+</body>
+</html>
