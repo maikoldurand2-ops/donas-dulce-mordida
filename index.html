@@ -623,6 +623,21 @@
       .tagline{display:none}
       .nav{gap:10px 16px; font-size:0.82rem}
     }
+
+    section[id],footer[id]{scroll-margin-top:160px}
+    /* Fotos locales: se conservan los originales y se recortan solo al mostrarlas. */
+    .hero-photo{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:center 58%}
+    .mini-donut-art::before,.promo-card .visual::before,.thumb::before{display:none}
+    .visual img,.thumb img{width:100%;height:100%;object-fit:cover}
+    .promo-tag{z-index:1}
+    .promo-card-content .ghost{margin-top:14px;padding:10px 16px}
+    .menu-original{margin:26px 0 10px;background:#fff;border-radius:24px;overflow:hidden;border:1px solid #f0d9df}
+    .menu-original img{width:100%;height:auto}
+    .menu-original figcaption{padding:14px 18px;color:var(--muted)}
+    .menu-original a{text-decoration:underline}
+    .photo-note{position:absolute;bottom:16px;left:16px;right:16px;background:rgba(255,255,255,.92);border-radius:14px;padding:10px 14px;font-size:.85rem;color:var(--brown)}
+    .donut-model{touch-action:none}
+    #orderSelection{margin-top:16px;width:100%}
   </style>
 </head>
 <body>
@@ -650,7 +665,7 @@
     <section class="hero">
       <div class="container hero-wrap">
         <div class="hero-box">
-          <span class="eyebrow">Administrador Activo</span>
+          <span class="eyebrow">Mini donas artesanales</span>
 
           <h1>Donas<br>dulces, suaves y con estilo.</h1>
 
@@ -669,21 +684,9 @@
           </div>
         </div>
 
-        <div class="mini-donut-art" aria-label="Arte de mini donas">
-          <div class="floating-badge badge-1">✨ Recién hechas</div>
-          <div class="floating-badge badge-2">🍩 Dulce y suave</div>
-          <div class="floating-badge badge-3">🎉 Para compartir</div>
-
-          <div class="donut-scene">
-            <div class="donut" aria-hidden="true">
-              <div class="glaze"></div>
-              <div class="topping"></div>
-              <div class="topping"></div>
-              <div class="topping"></div>
-              <div class="topping"></div>
-              <div class="topping"></div>
-            </div>
-          </div>
+        <div class="mini-donut-art">
+          <img class="hero-photo" src="assets/images/47604.webp" alt="Mini donas decoradas con galleta y gotas de chocolate blanco" width="1040" height="1560" fetchpriority="high" />
+          <div class="photo-note">Elige tus siropes y toppings favoritos. Imagen de presentación facilitada por el negocio.</div>
         </div>
       </div>
     </section>
@@ -699,27 +702,43 @@
 
         <div class="promo-grid">
           <article class="promo-card">
-            <span class="promo-tag">Promo Fiesta</span>
-            <div class="visual">
-              <div class="mini"></div>
-            </div>
+            <span class="promo-tag">6 mini donas · $2.00</span>
+            <div class="visual"><img src="assets/images/47571.jpg" alt="Mini donas con gotas de chocolate oscuro y blanco" loading="lazy" width="765" height="1020" /></div>
             <div class="promo-card-content">
-              <h3>Promo Fiesta</h3>
-              <p>12 Mini Donas</p>
+              <h3>Mini Clásico</h3><p>6 mini donas · $2.00</p>
+              <a class="ghost" href="https://wa.me/584142227837?text=Hola%20Donas%20Dulce%20Mordida%2C%20quiero%20pedir%20Mini%20Cl%C3%A1sico%3A%206%20mini%20donas%2C%20precio%20base%20%242.00.%20Quisiera%20confirmar%20toppings%2C%20disponibilidad%20y%20entrega." target="_blank" rel="noopener noreferrer">Pedir Mini Clásico</a>
             </div>
           </article>
-
           <article class="promo-card">
-            <span class="promo-tag">Mega Tentación</span>
-            <div class="visual">
-              <div class="mini" style="transform:scale(1.1)"></div>
-            </div>
+            <span class="promo-tag">8 mini donas · $2.50</span>
+            <div class="visual"><img src="assets/images/47574.jpg" alt="Caja de mini donas con galleta y gotas de chocolate blanco" loading="lazy" width="765" height="1020" /></div>
             <div class="promo-card-content">
-              <h3>Mega Tentación</h3>
-              <p>20 Mini Donas</p>
+              <h3>Dulce Tentación</h3><p>8 mini donas · $2.50</p>
+              <a class="ghost" href="https://wa.me/584142227837?text=Hola%20Donas%20Dulce%20Mordida%2C%20quiero%20pedir%20Dulce%20Tentaci%C3%B3n%3A%208%20mini%20donas%2C%20precio%20base%20%242.50.%20Quisiera%20confirmar%20toppings%2C%20disponibilidad%20y%20entrega." target="_blank" rel="noopener noreferrer">Pedir Dulce Tentación</a>
+            </div>
+          </article>
+          <article class="promo-card">
+            <span class="promo-tag">12 mini donas · $3.50</span>
+            <div class="visual"><img src="assets/images/47562.jpg" alt="Bandeja de mini donas con toppings de colores y galleta" loading="lazy" width="765" height="1020" /></div>
+            <div class="promo-card-content">
+              <h3>Fiesta Mini Donas</h3><p>12 mini donas · $3.50</p>
+              <a class="ghost" href="https://wa.me/584142227837?text=Hola%20Donas%20Dulce%20Mordida%2C%20quiero%20pedir%20Fiesta%20Mini%20Donas%3A%2012%20mini%20donas%2C%20precio%20base%20%243.50.%20Quisiera%20confirmar%20toppings%2C%20disponibilidad%20y%20entrega." target="_blank" rel="noopener noreferrer">Pedir Fiesta Mini Donas</a>
+            </div>
+          </article>
+          <article class="promo-card">
+            <span class="promo-tag">20 mini donas · $5.00</span>
+            <div class="visual"><img src="assets/images/47565.jpg" alt="Bandeja de mini donas con galleta y marshmallows" loading="lazy" width="765" height="1020" /></div>
+            <div class="promo-card-content">
+              <h3>Mega Tentación</h3><p>20 mini donas · $5.00</p>
+              <a class="ghost" href="https://wa.me/584142227837?text=Hola%20Donas%20Dulce%20Mordida%2C%20quiero%20pedir%20Mega%20Tentaci%C3%B3n%3A%2020%20mini%20donas%2C%20precio%20base%20%245.00.%20Quisiera%20confirmar%20toppings%2C%20disponibilidad%20y%20entrega." target="_blank" rel="noopener noreferrer">Pedir Mega Tentación</a>
             </div>
           </article>
         </div>
+        <p class="warning">Las fotos muestran combinaciones de presentación, no cantidades exactas de cada promoción. Los toppings extras tienen costo adicional; confirma el total por WhatsApp.</p>
+        <figure class="menu-original">
+          <a href="assets/images/46378.jpg" target="_blank" rel="noopener noreferrer"><img src="assets/images/46378.jpg" alt="Menú original: Mini Clásico, 6 mini donas por $2; Dulce Tentación, 8 por $2.50; Fiesta Mini Donas, 12 por $3.50; Mega Tentación, 20 por $5. Pedidos al +58 414-2227837." width="1560" height="1040" loading="lazy" /></a>
+          <figcaption>Menú original del negocio. <a href="assets/images/46378.jpg" target="_blank" rel="noopener noreferrer">Abrir imagen completa</a>.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -758,9 +777,11 @@
             <div class="controls">
               <div class="controls-block">
                 <h4>1. Tu Caja Seleccionada:</h4>
-                <div class="option-grid">
-                  <button class="option active" type="button">Promo Fiesta</button>
-                  <button class="option" type="button">Mega Tentación</button>
+                <div class="option-grid" id="packageOptions">
+                  <button class="option" type="button" data-package="clasico">Mini Clásico · $2.00</button>
+                  <button class="option" type="button" data-package="dulce">Dulce Tentación · $2.50</button>
+                  <button class="option active" type="button" data-package="fiesta">Fiesta Mini Donas · $3.50</button>
+                  <button class="option" type="button" data-package="tentacion">Mega Tentación · $5.00</button>
                 </div>
               </div>
 
@@ -768,9 +789,8 @@
                 <h4>2. Elige el Sirope (Cobertura 3D):</h4>
                 <div class="option-grid" id="syrupOptions">
                   <button class="option active" type="button" data-syrup="chocolate">Chocolate</button>
-                  <button class="option" type="button" data-syrup="fresa">Fresa</button>
-                  <button class="option" type="button" data-syrup="caramelo">Caramelo</button>
-                  <button class="option" type="button" data-syrup="vainilla">Vainilla</button>
+                  <button class="option" type="button" data-syrup="arequipe">Arequipe</button>
+                  <button class="option" type="button" data-syrup="condensada">Leche condensada</button>
                 </div>
               </div>
 
@@ -778,19 +798,25 @@
                 <h4>3. Elige tus Toppings (Decoración 3D):</h4>
                 <div class="option-grid" id="toppingOptions">
                   <button class="option active" type="button" data-topping="oreo">Oreo</button>
-                  <button class="option" type="button" data-topping="chispas">Chispas</button>
-                  <button class="option" type="button" data-topping="nuez">Nuez</button>
-                  <button class="option" type="button" data-topping="coco">Coco</button>
+                  <button class="option" type="button" data-topping="flips">Flips</button>
+                  <button class="option" type="button" data-topping="dandy">Dandy</button>
+                  <button class="option" type="button" data-topping="piruetas">Piruetas</button>
+                  <button class="option" type="button" data-topping="blanco">Gotas chocolate blanco</button>
+                  <button class="option" type="button" data-topping="chocolate">Gotas chocolate</button>
+                  <button class="option" type="button" data-topping="chips">Chips Ahoy</button>
+                  <button class="option" type="button" data-topping="palitos">Palitos</button>
+                  <button class="option" type="button" data-topping="marshmallows">Marshmallows</button>
                 </div>
               </div>
 
               <div class="totals">
                 <div class="totals-row">
-                  <span>Total estimado</span>
+                  <span>Precio base de la caja</span>
                   <strong id="totalPrice">$3.50</strong>
                 </div>
-                <div class="warning">Nota: Toppings extras tienen costo adicional ⓘ</div>
+                <div class="warning">Toppings extras con costo adicional por confirmar. El visor es ilustrativo; confirma la combinación y el total con el negocio.</div>
               </div>
+              <a class="cta" id="orderSelection" href="https://wa.me/584142227837" target="_blank" rel="noopener noreferrer">Pedir esta combinación por WhatsApp</a>
             </div>
           </div>
         </div>
@@ -808,24 +834,32 @@
 
         <div class="gallery-grid">
           <article class="gallery-item">
-            <div class="thumb"><div class="donut-plate"></div></div>
-            <div class="meta">
-              <h4>🍩 Donas Dulce Mordida</h4>
-            </div>
+            <a class="thumb" style="display:block" href="assets/images/47562.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ver foto completa: Color y chocolate"><img src="assets/images/47562.jpg" alt="Mini donas con confites de colores, galleta y gotas blancas" width="960" height="1280" loading="lazy" /></a>
+            <div class="meta"><h4>Color y chocolate</h4></div>
           </article>
-
           <article class="gallery-item">
-            <div class="thumb" style="background:linear-gradient(135deg,#f5d6e8,#ffd7a2,#efd3ff);"><div class="donut-plate" style="background:radial-gradient(circle at 35% 35%, #f7d99d 0%, #d17a45 26%, #a24d3d 52%, #532d2c 100%);"></div></div>
-            <div class="meta">
-              <h4>✨ Recientes</h4>
-            </div>
+            <a class="thumb" style="display:block" href="assets/images/47565.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ver foto completa: Galleta y marshmallows"><img src="assets/images/47565.jpg" alt="Bandeja decorada con galleta triturada y marshmallows" width="765" height="1020" loading="lazy" /></a>
+            <div class="meta"><h4>Galleta y marshmallows</h4></div>
           </article>
-
           <article class="gallery-item">
-            <div class="thumb" style="background:linear-gradient(135deg,#e0f4ff,#ffebef,#f6ddff);"><div class="donut-plate" style="background:radial-gradient(circle at 35% 35%, #f6dba2 0%, #d38d53 26%, #9b5c3f 52%, #472d2c 100%);"></div></div>
-            <div class="meta">
-              <h4>🎉 Para compartir</h4>
-            </div>
+            <a class="thumb" style="display:block" href="assets/images/47568.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ver foto completa: Chocolate y galleta"><img src="assets/images/47568.jpg" alt="Mini donas con lluvia de chocolate y galleta" width="1020" height="765" loading="lazy" /></a>
+            <div class="meta"><h4>Chocolate y galleta</h4></div>
+          </article>
+          <article class="gallery-item">
+            <a class="thumb" style="display:block" href="assets/images/47574.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ver foto completa: Oreo y gotas blancas"><img src="assets/images/47574.jpg" alt="Presentación con galleta oscura y gotas blancas" width="765" height="1020" loading="lazy" /></a>
+            <div class="meta"><h4>Oreo y gotas blancas</h4></div>
+          </article>
+          <article class="gallery-item">
+            <a class="thumb" style="display:block" href="assets/images/47571.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ver foto completa: Doble chocolate"><img src="assets/images/47571.jpg" alt="Presentación con gotas oscuras y blancas" width="765" height="1020" loading="lazy" /></a>
+            <div class="meta"><h4>Doble chocolate</h4></div>
+          </article>
+          <article class="gallery-item">
+            <a class="thumb" style="display:block" href="assets/images/41725.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ver foto completa: Un toque de color"><img src="assets/images/41725.jpg" alt="Mini donas con galleta y marshmallows de colores" width="765" height="1020" loading="lazy" /></a>
+            <div class="meta"><h4>Un toque de color</h4></div>
+          </article>
+          <article class="gallery-item">
+            <a class="thumb" style="display:block" href="assets/images/47577.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ver foto completa: Para compartir"><img src="assets/images/47577.jpg" alt="Bandeja con galleta y gotas de chocolate blanco" width="765" height="1020" loading="lazy" /></a>
+            <div class="meta"><h4>Para compartir</h4></div>
           </article>
         </div>
       </div>
@@ -852,19 +886,19 @@
   <script>
     const syrupPalette = {
       chocolate: "linear-gradient(135deg, #f7cf65 0%, #db7a3c 20%, #87412e 38%, #46262c 100%)",
-      fresa: "linear-gradient(135deg, #ffc6d9 0%, #ff7db0 28%, #f95b9d 58%, #a52b63 100%)",
+      arequipe: "linear-gradient(135deg, #e5b56a, #b56c2f, #79411f)",
       caramelo: "linear-gradient(135deg, #f9e1a3 0%, #ffb85c 28%, #db7a27 58%, #7a3a20 100%)",
-      vainilla: "linear-gradient(135deg, #fef7cf 0%, #f8dd8e 28%, #e7b95e 58%, #b88439 100%)"
+      condensada: "linear-gradient(135deg, #fef7cf 0%, #f8dd8e 28%, #e7b95e 58%, #b88439 100%)"
     };
 
     const toppingPalette = {
-      oreo: ["#1a1a1a","#fff","#f0f0f0"],
-      chispas: ["#f3d24a","#ff956d","#cf5c96"],
-      nuez: ["#6b442f","#9a6848","#d7b089"],
-      coco: ["#f5e7c1","#dbba83","#a28047"]
+      oreo:["#1a1a1a","#fff","#333"], flips:["#8c562f","#c59758","#75432b"],
+      dandy:["#e52b38","#f8d82b","#39a745"], piruetas:["#a06c39","#eee0bc","#713b24"],
+      blanco:["#fff7de","#f4e5b5"], chocolate:["#593628","#774932"],
+      chips:["#b28c56","#533225"], palitos:["#714127","#40281f"],
+      marshmallows:["#fff7e9","#f7bfd4","#badce8"]
     };
-
-    const priceMap = { fiesta: 3.5, tentacion: 5.5 };
+    const priceMap = {clasico:2, dulce:2.5, fiesta:3.5, tentacion:5};
     let selectedSyrup = "chocolate";
     let selectedTopping = "oreo";
     let selectedPackage = "fiesta";
@@ -873,7 +907,7 @@
     const totalPrice = document.getElementById("totalPrice");
     const syrupButtons = [...document.querySelectorAll("[data-syrup]")];
     const toppingButtons = [...document.querySelectorAll("[data-topping]")];
-    const packageButtons = [...document.querySelectorAll(".option")].filter(el => !el.dataset.syrup && !el.dataset.topping);
+    const packageButtons = [...document.querySelectorAll("[data-package]")];
 
     function updateDonut() {
       const glaze = donutModel.querySelector(".glaze");
@@ -887,9 +921,14 @@
         el.style.boxShadow = `0 0 0 6px rgba(255,255,255,0.10), 0 10px 18px rgba(0,0,0,0.10)`;
       });
 
-      const basePrice = priceMap[selectedPackage] || 3.5;
-      const extra = selectedTopping === "oreo" ? 0 : 0.8;
-      totalPrice.textContent = "$" + (basePrice + extra).toFixed(2);
+      const basePrice = priceMap[selectedPackage];
+      totalPrice.textContent = "$" + basePrice.toFixed(2);
+      const packageLabel = packageButtons.find(b => b.dataset.package === selectedPackage).textContent;
+      const syrupLabel = syrupButtons.find(b => b.dataset.syrup === selectedSyrup).textContent;
+      const toppingLabel = toppingButtons.find(b => b.dataset.topping === selectedTopping).textContent;
+      document.querySelector(".stage-badge").textContent = `Viendo: ${syrupLabel} + ${toppingLabel}`;
+      const message = `Hola Donas Dulce Mordida, quiero pedir ${packageLabel}. Sirope: ${syrupLabel}. Topping: ${toppingLabel}. Quisiera confirmar disponibilidad, extras y total final.`;
+      document.getElementById("orderSelection").href = "https://wa.me/584142227837?text=" + encodeURIComponent(message);
     }
 
     document.getElementById("syrupOptions").addEventListener("click", (event) => {
@@ -908,12 +947,10 @@
       updateDonut();
     });
 
-    const packageButtonsAll = document.querySelectorAll(".option");
-    packageButtonsAll.forEach(btn => {
+    packageButtons.forEach(btn => {
       btn.addEventListener("click", () => {
-        if (btn.dataset.syrup || btn.dataset.topping) return;
-        packageButtonsAll.forEach(b => b.classList.toggle("active", b === btn));
-        selectedPackage = btn.textContent.includes("Mega") ? "tentacion" : "fiesta";
+        packageButtons.forEach(b => b.classList.toggle("active", b === btn));
+        selectedPackage = btn.dataset.package;
         updateDonut();
       });
     });
